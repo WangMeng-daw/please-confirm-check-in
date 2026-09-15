@@ -2,7 +2,7 @@
 // Every message and scheduled reply has an explicit owning account.
 const PM_PLAYER='summer_lin',PM_OLD='nightboat';
 const pmAccount=()=>S.forum.user===PM_OLD?PM_OLD:PM_PLAYER;
-const pmName=id=>id===PM_PLAYER?'林夏':id===PM_OLD?'夜航不靠岸':id;
+const pmName=id=>id===PM_PLAYER?'林砚':id===PM_OLD?'夜航不靠岸':id;
 const pmDate=()=>deviceDate().toISOString().slice(0,10)+' '+time();
 function pmLegacyDate(s,at){if(/^\d{4}-/.test(at||''))return at;const now=Date.UTC(2026,8,13)+s.time*60000,d=new Date(now),[h,m]=String(at||'00:00').split(':').map(Number);d.setUTCHours(h||0,m||0,0,0);if(d.getTime()>now)d.setUTCDate(d.getUTCDate()-1);return d.toISOString().slice(0,10)+' '+String(at||'00:00');}
 function pmThread(owner,peer,create=true){const account=S.forum.dm.accounts[owner];if(!account)return null;if(create)account.threads[peer]??={peer,messages:[],unread:0};return account.threads[peer];}
@@ -22,7 +22,7 @@ forumInbox=()=>{const owner=pmAccount(),list=Object.values(S.forum.dm.accounts[o
 const viewBeforePM=forumView;forumView=()=>{if(S.view.startsWith('forum:chat:'))return pmConversation(S.view.slice(11));return viewBeforePM();};
 const privateBeforePM=forumPrivate;forumPrivate=view=>{if(!view.startsWith('dm:'))return privateBeforePM(view);if(pmAccount()!==PM_OLD)return forumLogin();const peer=PRIVATE_THREADS.find(t=>t.id===view.slice(3))?.name;return peer?pmConversation(peer):forumInbox();};
 const navBeforePM=forumNav;forumNav=active=>navBeforePM(active).replace('<span>消息</span>','<span>消息'+(pmUnread()?'<b class="pm-nav-dot"></b>':'')+'</span>');
-const loginBeforePM=forumLogin;forumLogin=()=>loginBeforePM()+B('pm-player-account','使用已登录账号：林夏','pm-saved-account');
+const loginBeforePM=forumLogin;forumLogin=()=>loginBeforePM()+B('pm-player-account','使用已登录账号：林砚','pm-saved-account');
 function openPM(peer){if(peer===pmName(pmAccount()))return sheet('私信','<p>不能给自己发送私信。</p>');forumLink('chat:'+peer);const t=pmThread(pmAccount(),peer),chat=$('#pm-chat');if(chat&&t.messages.some(m=>!m.historical))chat.scrollTop=chat.scrollHeight;}
 ACTIONS['forum-message']=d=>openPM(d.author);ACTIONS['tb-chat']=d=>openPM(d.author);ACTIONS['pm-back']=()=>forumLink('inbox');
 ACTIONS['pm-player-account']=()=>{S.forum.user=null;S.forum.loginError='';save();forumLink('inbox');};
