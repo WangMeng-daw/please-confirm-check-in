@@ -1,0 +1,10 @@
+'use strict';
+function jobIsDeleted(id){return id==='haunted'&&isHaunted();}
+function deletedJobView(){return appHeader('职位详情','home')+`<div class="scroll deleted-job-page"><div class="deleted-job-icon">${I('files')}</div><h2>该职位已删除</h2><p>职位信息已无法查看</p><div class="deleted-job-history"><small>曾沟通的职位</small><h3>凶宅试睡员 · 夜间体验</h3>${B('recruiter-profile',recruiterAvatar(getJob('haunted'))+'<span><b>周先生</b><small>安住不动产</small></span>'+I('next'),'deleted-recruiter',{id:'haunted'})}</div>${B('job-start','查看历史沟通','primary',{id:'haunted'})}${B('open','查看其他职位','secondary',{app:'biss',view:'browse'})}</div>`;}
+const detailBeforeDeleted=jobDetail;jobDetail=id=>jobIsDeleted(id)?deletedJobView():detailBeforeDeleted(id);
+const bissBeforeDeleted=VIEWS.biss;VIEWS.biss=()=>isHaunted()&&!S.view?deletedJobView():bissBeforeDeleted();
+const chatBeforeDeleted=jobChat;jobChat=id=>{let html=chatBeforeDeleted(id);if(!jobIsDeleted(id))return html;return html.replace(/<div class="job-chat-strip">[\s\S]*?<\/div>/,`<div class="job-chat-strip deleted-chat-strip">${B('job-detail-link','该职位已删除　›','',{id})}</div>`).replace(/<div class="job-chat-tools">[\s\S]*?<\/div>/,'').replace(/<div class="chat-choices">[\s\S]*?<\/div>/,'').replace(/<form class="composer" id="biss-chat-form"[\s\S]*?<\/form>/,'<div class="deleted-chat-footer">该职位已删除，无法继续沟通</div>');};
+const sendBeforeDeleted=jobSendText;jobSendText=(id,text)=>{if(jobIsDeleted(id))return sheet('该职位已删除','<p>无法继续沟通，可查看此前的聊天记录。</p>');sendBeforeDeleted(id,text);};
+for(const action of ['job-greet','resume-send','resume-confirm','job-accept']){const previous=ACTIONS[action];ACTIONS[action]=d=>jobIsDeleted(d.id)?sheet('该职位已删除','<p>该职位已停止接受简历和试岗申请。</p>'):previous(d);}
+const recruiterBeforeDeleted=ACTIONS['recruiter-profile'];ACTIONS['recruiter-profile']=d=>jobIsDeleted(d.id)?sheet('周先生',`<div class="deleted-recruiter-profile">${recruiterAvatar(getJob('haunted'))}<h3>周先生</h3><p>安住不动产</p><small>该职位已删除</small></div>${B('job-start','查看历史沟通','secondary',{id:'haunted'})}`):recruiterBeforeDeleted(d);
+save();render();

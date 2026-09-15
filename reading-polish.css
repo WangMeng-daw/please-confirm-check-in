@@ -1,0 +1,15 @@
+#phone .standard-numerals{font-family:"Times New Roman",Times,serif!important;font-variant-numeric:lining-nums!important;font-feature-settings:"lnum" 1,"onum" 0!important;font-style:normal;letter-spacing:normal}
+#phone input,#phone select,#phone option,#phone textarea{font-family:"Times New Roman","Microsoft YaHei",sans-serif!important;font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1,"onum" 0}
+.tb-post-text>p,.rd-blog-article>p,.rd-news>p{text-indent:2em}
+.tb-reply>div>p,.tb-sub-reply,.moment>.content>p,.rd-blog-entry>p,.rd-blog-comment p{text-indent:0}
+.rd-blog-article>.rd-last-online{text-indent:0}
+.rd-chat-quiet{text-align:center;background:#ededed;color:#999;padding:20px;font-size:12px}
+.rd-shen-profile{text-align:center;padding:45px 24px;background:#f7f5f0}.rd-shen-profile>img{width:108px;height:108px;border-radius:14px;object-fit:cover}.rd-shen-profile h2{font-size:25px;margin:20px 0 8px}.rd-shen-profile p{color:#828578;line-height:1.9}
+#phone[data-app=wechat] .chat-choices:has([data-action=rd-shen-reply]){max-height:34%;overflow-y:auto;flex-shrink:0}.chat-choices [data-action=rd-shen-reply]{white-space:normal;text-align:left;line-height:1.8;padding:12px 17px;font-size:13px}
+.rd-memory-caption{background:#faf6ec;color:#6c6253;padding:12px 19px;flex-shrink:0}.rd-memory-caption p{line-height:1.85;font-size:13px;margin:0}.rd-memory-image{animation:memory-light 1.2s ease-out}@keyframes memory-light{from{filter:brightness(.45) saturate(.4)}to{filter:brightness(1) saturate(1)}}
+@media(prefers-reduced-motion:reduce){.rd-memory-image{animation:none}}
+@media(max-width:350px){.rd-memory-caption{padding:9px 14px}.rd-memory-caption p{font-size:12px}.chat-choices [data-action=rd-shen-reply]{font-size:12px}}
+
+.rd-replay-note{font-size:12px;line-height:1.8;color:#a5a3aa;margin:0 0 8px;text-align:center}
+
+.moments-month-note{text-align:center;color:#aaa;font-size:11px;padding:22px 12px 35px}.account-moments small.moment-self-only{display:inline-block;margin:8px 0 0 12px;color:#90979b;font-size:11px}

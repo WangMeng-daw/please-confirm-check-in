@@ -1,0 +1,1 @@
+{"name":"haunted-stay","version":"1.0.0","private":true,"description":"请确认入住 · 凶宅试睡手机恐怖游戏","scripts":{"start":"node server.cjs","check":"node --check game.js && node --check server.cjs"}}
