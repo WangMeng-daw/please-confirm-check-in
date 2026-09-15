@@ -24,3 +24,11 @@ svg.ios-photos-icon,svg.ios-photos-icon ellipse{stroke:none;stroke-width:0}
 .appicon.photos svg.ios-photos-icon{width:86%;height:86%}
 
 .chatrow.wx-pinned{background:#f2f2f2}
+
+/* WeChat-style own profile: avatar beside the name and account details. */
+.contactcard.wx-me-card{display:flex;align-items:center;gap:16px;padding:28px 20px 32px;text-align:left}
+.wx-me-card>.avatar-link{align-self:center}
+.contactcard.wx-me-card .avatar{width:64px;height:64px;margin:0;border-radius:10px;flex:none}
+.wx-me-info{flex:1;min-width:0}
+.contactcard.wx-me-card h2{margin:0 0 9px;font-size:22px;line-height:1.3}
+.contactcard.wx-me-card p{margin:0;font-size:12px;line-height:1.6;overflow-wrap:anywhere}
