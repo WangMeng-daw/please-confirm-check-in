@@ -1,5 +1,5 @@
 self.GAME_RESOURCES={
-  "version": "63bf0a9160c43fac",
+  "version": "56d1ad9f7eb5c003",
   "files": [
     {
       "url": "account-lore.js",
@@ -618,8 +618,8 @@ self.GAME_RESOURCES={
     },
     {
       "url": "redemption-investigation.js",
-      "bytes": 40103,
-      "revision": "7ccaca3a7810f9dbcc9570027dc8cf32b540f950aa1a7ea45139df7bd1b52732"
+      "bytes": 40499,
+      "revision": "0d7d294d55b600512aa05c88b9ed6fabe70c29cf8f1989aa6c80d0803d55acc4"
     },
     {
       "url": "redemption.css",

@@ -51,4 +51,4 @@ self.addEventListener('fetch',event=>{
   try{const response=await fetch(req);if(response.ok)return response;if(cached)return cached;return response;}catch(e){if(cached)return cached;throw e;}
  })());
 });
-// manifest-version: 63bf0a9160c43fac
+// manifest-version: 56d1ad9f7eb5c003
